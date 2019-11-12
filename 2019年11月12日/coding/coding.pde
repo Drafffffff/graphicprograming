@@ -1,7 +1,7 @@
 void setup() {
-  size(600, 600);
+  size(800, 800);
   background(0);
-  translate(width/2, height);
+  translate(width/2, height/2);
   for (int i=1; i<10000; i++) {
     IntList sequence = new IntList();
     int n = i ;
@@ -11,9 +11,9 @@ void setup() {
     } while (n!=1);
     sequence.append(1);
     sequence.reverse();
-   
+
     float lens= 10;
-    float angle = PI/12;
+    float angle = PI/16;
     resetMatrix();
     translate(width/2, height/2);
     for (int j =0; j<sequence.size(); j++) {
@@ -24,8 +24,8 @@ void setup() {
         rotate(-angle);
       }
       stroke(255);
-      line(0, 0, 0, -lens);
-      translate(0, -lens);
+      line(0, 0, lens, -lens);
+      translate(lens, 0);
     }
   }
 
