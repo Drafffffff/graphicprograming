@@ -1,12 +1,20 @@
 let tree
 function setup() {
-    noCanvas();
+    createCanvas(600, 400);
+    background(51);
+
+}
+
+function draw(){
+
+    if(frameCount%8==0){
+        background(51);
     tree = new Tree();
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
         tree.addValue(floor(random(0, 100)));
     }
-    console.log(tree);
     tree.traverse();
+    }
 }
 
 
@@ -18,13 +26,15 @@ class Tree {
         let n = new Node(val);
         if (this.root == null) {
             this.root = n;
+            this.root.x  = width/2;
+            this.root.y = 110;
         }
         else {
             this.root.addNode(n);
         }
     }
     traverse() {
-        this.root.visit();
+        this.root.visit(this.root);
     }
     search(val) {
         let found = this.root.search(val);
@@ -35,37 +45,47 @@ class Tree {
             console.log("not found.")
         }
     }
-
 }
 
 class Node {
-    constructor(val) {
+    constructor(val,x,y) {
         this.value = val;
         this.left = null;
         this.right = null;
+        this.x = x;
+        this.y = y;
     }
     addNode(n) {
         if (n.value < this.value) {
             if (this.left == null) {
                 this.left = n;
+                this.left.x=this.x-50;
+                this.left.y = this.y+20;
             } else {
                 this.left.addNode(n);
             }
         } else if (n.value > this.value) {
             if (this.right == null) {
                 this.right = n;
+                this.right.x=this.x+50;
+                this.right.y = this.y+20;
             } else {
                 this.right.addNode(n);
             }
         }
     }
-    visit() {
+    visit(parent) {
         if (this.left != null) {
-            this.left.visit();
+            this.left.visit(this);
         }
         console.log(this.value);
+        fill(255);
+        noStroke();
+        // text(this.value, this.x, this.y)
+        stroke(255);
+        line(parent.x,parent.y,this.x,this.y);
         if (this.right != null) {
-            this.right.visit();
+            this.right.visit(this);
         }
     }
     search(val) {
