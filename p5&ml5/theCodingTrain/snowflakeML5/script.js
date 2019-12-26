@@ -7,7 +7,7 @@ function setup() {
     createCanvas(400, 400);
     x = random(0, width);
     y = random(0, height);
-    stroke(255);
+    stroke(255)
     strokeWeight(1);
     background(0);
     model = ml5.sketchRNN('snowflake', modelReady);
