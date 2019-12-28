@@ -44,7 +44,7 @@ function gen() {
 
 
     let cells = 6;
-    let  offset = width / 10;
+    let offset = width / 10;
     let margin = offset / 5;
     let w = (width - offset * 2 - margin * (cells - 1)) / cells;
     let h = (height - offset * 2 - margin * (cells - 1)) / cells;
@@ -90,3 +90,5 @@ function gen() {
         }
     }
 }
+
+
