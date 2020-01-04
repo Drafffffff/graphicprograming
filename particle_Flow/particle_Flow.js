@@ -1,4 +1,4 @@
-let  num = 900;
+let  num = 90;
 var particles_a = [];
 var particles_b = [];
 var particles_c = [];
@@ -7,8 +7,8 @@ let noiseStrength = 1;
 //let r = 1;
 
 function setup() {
-  createCanvas(1080, 800);
-  //createCanvas(windowWidth,windowHeight);
+  // createCanvas(1080, 800);
+  createCanvas(windowWidth,windowHeight);
   noStroke();
   for (let i=0; i<num; i++) {
     let loc_a = createVector(random(width*2.9), random(height), 5);
